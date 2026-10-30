@@ -1,0 +1,267 @@
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f4f6fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+header {
+    background-color: #10245c;
+    padding: 20px 5%;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav h2 {
+    color: #ffcc00;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Hero Banner */
+.hero {
+    background: linear-gradient(120deg, #10245c, #e31837);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+button {
+    background-color: #ffcc00;
+    color: #10245c;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #ffffff;
+}
+
+/* Common Sections */
+section {
+    padding: 50px 6%;
+}
+
+section h2 {
+    color: #10245c;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+section h3 {
+    color: #e31837;
+    margin: 20px 0 10px;
+}
+
+/* About Section */
+#about {
+    background-color: white;
+}
+
+#about ul {
+    margin-left: 30px;
+}
+
+/* Match Schedule */
+#matches {
+    background-color: #eef1f8;
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+select,
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+th {
+    background-color: #10245c;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td a {
+    color: #e31837;
+    font-weight: bold;
+}
+
+/* Booking Section */
+#booking {
+    background-color: white;
+}
+
+.booking-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.booking-form,
+.booking-summary {
+    background-color: #f4f6fb;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.booking-form input,
+.booking-form select {
+    width: 100%;
+}
+
+.booking-form button {
+    width: 100%;
+    background-color: #e31837;
+    color: white;
+}
+
+.booking-summary {
+    border-top: 5px solid #ffcc00;
+}
+
+.booking-summary p {
+    margin: 15px 0;
+}
+
+/* My Bookings */
+#mybookings {
+    background-color: #eef1f8;
+}
+
+/* Guidelines Cards */
+#guidelines {
+    background-color: white;
+}
+
+.guidelines-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.guideline-card {
+    background-color: #f4f6fb;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid #e31837;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.guideline-card h3 {
+    margin-top: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #10245c;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+
+    .guidelines-container {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+}
