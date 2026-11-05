@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Ticket Booking Form</title>
+</head>
+
+<body>
+
+    <h1>IPL Ticket Booking</h1>
+    <p>Book your tickets and experience the stadium energy live!</p>
+
+    <form action="#" method="get">
+
+        <fieldset>
+            <legend>Personal Details</legend>
+
+            <label for="name">Full Name:</label><br>
+            <input type="text" id="name" name="name"
+                   required minlength="3" maxlength="50"><br><br>
+
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email"
+                   required><br><br>
+
+            <label for="phone">Phone Number:</label><br>
+            <input type="tel" id="phone" name="phone"
+                   pattern="[0-9]{10}"
+                   minlength="10" maxlength="10"
+                   title="Enter a valid 10-digit phone number"
+                   required><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Ticket Details</legend>
+
+            <label for="match">Select Match:</label><br>
+            <select id="match" name="match" required>
+                <option value="">-- Select a Match --</option>
+                <option value="RCB vs CSK">RCB vs CSK</option>
+                <option value="MI vs KKR">MI vs KKR</option>
+                <option value="SRH vs RR">SRH vs RR</option>
+                <option value="DC vs PBKS">DC vs PBKS</option>
+            </select><br><br>
+
+            <label for="stand">Stand Category:</label><br>
+            <select id="stand" name="stand" required>
+                <option value="">-- Select a Stand --</option>
+                <option value="General">General</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+            </select><br><br>
+
+            <label for="tickets">Number of Tickets:</label><br>
+            <input type="number" id="tickets" name="tickets"
+                   min="1" max="10" required><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Additional Preferences</legend>
+
+            <p>Preferred Seating:</p>
+
+            <input type="radio" id="left" name="seating"
+                   value="Left Stand" required>
+            <label for="left">Left Stand</label><br>
+
+            <input type="radio" id="right" name="seating"
+                   value="Right Stand">
+            <label for="right">Right Stand</label><br><br>
+
+            <input type="checkbox" id="terms" name="terms"
+                   required>
+            <label for="terms">
+                I agree to the booking guidelines.
+            </label>
+        </fieldset>
+
+        <br>
+
+        <button type="submit">Submit Booking</button>
+        <button type="reset">Reset Form</button>
+
+    </form>
+
+</body>
+</html>
