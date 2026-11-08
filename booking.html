@@ -1,92 +1,135 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPL Ticket Booking Form</title>
+    <title>IPL Ticket Booking</title>
 </head>
 
 <body>
 
-    <h1>IPL Ticket Booking</h1>
-    <p>Book your tickets and experience the stadium energy live!</p>
+    <h1>IPL 2026 Ticket Booking Form</h1>
+
+    <p>Book your tickets and enjoy the excitement of IPL!</p>
+
+    <hr>
 
     <form action="#" method="get">
 
-        <fieldset>
-            <legend>Personal Details</legend>
+        <h2>Enter Your Booking Details</h2>
 
-            <label for="name">Full Name:</label><br>
-            <input type="text" id="name" name="name"
-                   required minlength="3" maxlength="50"><br><br>
+        <!-- Name -->
+        <label for="name">Full Name:</label>
+        <input type="text"
+               id="name"
+               name="name"
+               placeholder="Enter your full name"
+               minlength="3"
+               maxlength="40"
+               required>
 
-            <label for="email">Email Address:</label><br>
-            <input type="email" id="email" name="email"
-                   required><br><br>
+        <br><br>
 
-            <label for="phone">Phone Number:</label><br>
-            <input type="tel" id="phone" name="phone"
-                   pattern="[0-9]{10}"
-                   minlength="10" maxlength="10"
-                   title="Enter a valid 10-digit phone number"
-                   required><br><br>
-        </fieldset>
+        <!-- Email -->
+        <label for="email">Email Address:</label>
+        <input type="email"
+               id="email"
+               name="email"
+               placeholder="Enter your email"
+               required>
 
-        <br>
+        <br><br>
 
-        <fieldset>
-            <legend>Ticket Details</legend>
+        <!-- Phone Number -->
+        <label for="phone">Phone Number:</label>
+        <input type="tel"
+               id="phone"
+               name="phone"
+               placeholder="Enter 10-digit phone number"
+               pattern="[0-9]{10}"
+               minlength="10"
+               maxlength="10"
+               required>
 
-            <label for="match">Select Match:</label><br>
-            <select id="match" name="match" required>
-                <option value="">-- Select a Match --</option>
-                <option value="RCB vs CSK">RCB vs CSK</option>
-                <option value="MI vs KKR">MI vs KKR</option>
-                <option value="SRH vs RR">SRH vs RR</option>
-                <option value="DC vs PBKS">DC vs PBKS</option>
-            </select><br><br>
+        <br><br>
 
-            <label for="stand">Stand Category:</label><br>
-            <select id="stand" name="stand" required>
-                <option value="">-- Select a Stand --</option>
-                <option value="General">General</option>
-                <option value="Premium">Premium</option>
-                <option value="VIP">VIP</option>
-            </select><br><br>
+        <!-- Match Selection -->
+        <label for="match">Select Match:</label>
+        <select id="match" name="match" required>
 
-            <label for="tickets">Number of Tickets:</label><br>
-            <input type="number" id="tickets" name="tickets"
-                   min="1" max="10" required><br><br>
-        </fieldset>
+            <option value="">-- Select a Match --</option>
+            <option value="RCB-CSK">RCB vs CSK</option>
+            <option value="MI-KKR">MI vs KKR</option>
+            <option value="CSK-SRH">CSK vs SRH</option>
+            <option value="KKR-RCB">KKR vs RCB</option>
 
-        <br>
+        </select>
 
-        <fieldset>
-            <legend>Additional Preferences</legend>
+        <br><br>
 
-            <p>Preferred Seating:</p>
+        <!-- Stand Category -->
+        <label for="stand">Stand Category:</label>
+        <select id="stand" name="stand" required>
 
-            <input type="radio" id="left" name="seating"
-                   value="Left Stand" required>
-            <label for="left">Left Stand</label><br>
+            <option value="">-- Select Stand --</option>
+            <option value="General">General Stand</option>
+            <option value="Premium">Premium Stand</option>
+            <option value="VIP">VIP Stand</option>
 
-            <input type="radio" id="right" name="seating"
-                   value="Right Stand">
-            <label for="right">Right Stand</label><br><br>
+        </select>
 
-            <input type="checkbox" id="terms" name="terms"
-                   required>
-            <label for="terms">
-                I agree to the booking guidelines.
-            </label>
-        </fieldset>
+        <br><br>
 
-        <br>
+        <!-- Number of Tickets -->
+        <label for="quantity">Number of Tickets:</label>
+        <input type="number"
+               id="quantity"
+               name="quantity"
+               min="1"
+               max="10"
+               required>
 
+        <br><br>
+
+        <!-- Additional Preference -->
+        <p>Seating Preference:</p>
+
+        <input type="radio"
+               id="boundary"
+               name="preference"
+               value="Near Boundary"
+               required>
+
+        <label for="boundary">Near Boundary</label>
+
+        <input type="radio"
+               id="regular"
+               name="preference"
+               value="Regular Seating">
+
+        <label for="regular">Regular Seating</label>
+
+        <br><br>
+
+        <!-- Submit and Reset Buttons -->
         <button type="submit">Submit Booking</button>
+
         <button type="reset">Reset Form</button>
 
     </form>
 
+    <hr>
+
+    <p>
+        <a href="index.html">Back to Home</a>
+    </p>
+
+    <footer>
+        <p>&copy; 2026 IPL Ticket Booking Website. All Rights Reserved.</p>
+    </footer>
+
 </body>
+
 </html>
