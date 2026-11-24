@@ -1,3 +1,4 @@
+
 /* CSS Variables */
 :root {
     --primary: #0b1f4d;
@@ -20,15 +21,8 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation Bar */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-nav {
+/* Navigation Bar - Flexbox */
+.navbar {
     background: var(--primary);
     color: white;
     padding: 15px 30px;
@@ -36,26 +30,48 @@ nav {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1000;
 }
 
-nav h2 {
+.logo {
+    margin: 0;
+    color: white;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
+.navbar ul li {
+    margin: 0;
 }
 
-nav a {
+.navbar a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
-nav a:hover {
+.navbar a:hover {
     color: var(--accent);
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 8px 14px;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 /* Hero Section */
@@ -63,7 +79,7 @@ nav a:hover {
     background: linear-gradient(135deg, #0b1f4d, #1e40af);
     color: white;
     text-align: center;
-    padding: 120px 20px 60px;
+    padding: 100px 20px 60px;
 }
 
 .hero h1 {
@@ -97,16 +113,12 @@ button:hover {
     background: #ffd54f;
 }
 
-/* Main Content */
-main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-}
-
+/* Main Sections */
 section {
-    margin: 40px 0;
-    scroll-margin-top: 90px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    scroll-margin-top: 30px;
 }
 
 section h2 {
@@ -115,39 +127,93 @@ section h2 {
     margin-bottom: 25px;
 }
 
-/* Match Schedule Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-th,
-td {
-    padding: 15px;
+/* About Section */
+.about {
     text-align: center;
-    border: 1px solid #ddd;
-}
-
-th {
-    background: var(--primary);
-    color: white;
-}
-
-tr:hover {
-    background: #fff8e1;
-}
-
-/* Cards */
-.card {
     background: white;
-    padding: 25px;
-    margin: 15px 0;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Match Controls */
+.match-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.match-controls label {
+    margin: 0;
+}
+
+.match-controls select {
+    width: auto;
+    min-width: 150px;
+}
+
+.view-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Match Cards - CSS Grid */
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.match-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border-top: 5px solid var(--accent);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+}
+
+.match-card h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.match-card h3 {
+    color: #777;
+}
+
+.match-card p {
+    margin: 8px 0;
+}
+
+/* List View */
+.match-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.match-grid.list-view .match-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.match-grid.list-view .match-card h2,
+.match-grid.list-view .match-card h3,
+.match-grid.list-view .match-card p {
+    margin: 5px;
 }
 
 /* Booking Form */
@@ -180,13 +246,54 @@ form button {
     width: 100%;
 }
 
-/* Guidelines */
-ul {
-    padding-left: 25px;
+/* Booking Summary */
+.booking-summary {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
 }
 
-li {
-    margin: 10px 0;
+.booking-summary h3 {
+    color: var(--primary);
+}
+
+/* Toast Notification */
+#toast {
+    visibility: hidden;
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin: 15px auto;
+    max-width: 400px;
+}
+
+#toast.show {
+    visibility: visible;
+}
+
+/* Guidelines - Three Column Grid */
+.guidelines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.guideline-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border-top: 4px solid var(--accent);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.guideline-card h3 {
+    color: var(--primary);
 }
 
 /* Footer */
@@ -202,29 +309,93 @@ footer p {
     margin: 5px;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        gap: 15px;
+/* Tablet Responsive Design */
+@media (max-width: 900px) {
+
+    .match-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .nav-links {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+    .guidelines-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .hero h1 {
-        font-size: 28px;
+        font-size: 32px;
+    }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 600px) {
+
+    /* Mobile Navigation */
+    .navbar {
+        padding: 15px;
     }
 
-    table {
-        font-size: 12px;
+    .menu-toggle {
+        display: block;
     }
 
-    th,
-    td {
-        padding: 8px;
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .navbar ul.active {
+        display: flex;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    /* Match Cards */
+    .match-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-grid.list-view .match-card {
+        display: block;
+    }
+
+    /* Controls */
+    .match-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .match-controls select {
+        width: 100%;
+    }
+
+    .view-buttons {
+        justify-content: center;
+    }
+
+    /* Guidelines */
+    .guidelines-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Form */
+    form {
+        padding: 20px;
+    }
+
+    section {
+        padding: 15px;
     }
 }

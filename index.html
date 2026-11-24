@@ -10,134 +10,198 @@
 <body>
 
     <!-- Navigation Bar -->
-    <nav>
-        <h2>IPL TICKET BOOKING</h2>
-        <ul>
+    <nav class="navbar">
+
+        <h2 class="logo">IPL TICKET BOOKING</h2>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+            ☰
+        </button>
+
+        <ul id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#matches">Matches</a></li>
             <li><a href="#booking">Book Ticket</a></li>
             <li><a href="#summary">My Bookings</a></li>
             <li><a href="#guidelines">Guidelines</a></li>
         </ul>
+
     </nav>
 
     <!-- Home Section -->
     <section id="home" class="hero">
+
         <h1>Experience The Stadium Energy Live!</h1>
-        <p>Book your IPL tickets and enjoy the excitement of cricket.</p>
+
+        <p>
+            Book your IPL tickets and enjoy the excitement of cricket.
+        </p>
+
         <a href="#matches" class="btn">View Schedule</a>
         <a href="#booking" class="btn">Book Ticket</a>
+
     </section>
 
     <!-- About IPL -->
     <section class="about">
+
         <h2>About IPL 2026</h2>
+
         <p>
             Indian Premier League is one of the most exciting cricket
             tournaments in the world. Watch your favourite teams
             compete and enjoy the stadium experience.
         </p>
+
         <p>
             Popular Teams: RCB, CSK, MI, KKR, SRH and RR.
         </p>
+
         <p>
             Major Venues: Bengaluru, Chennai, Mumbai and Kolkata.
         </p>
+
     </section>
 
     <!-- Match Schedule -->
     <section id="matches">
+
         <h2>Match Schedule</h2>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Match No.</th>
-                    <th>Teams</th>
-                    <th>Date & Time</th>
-                    <th>Venue</th>
-                    <th>General</th>
-                    <th>Premium</th>
-                    <th>VIP</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+        <!-- Team Filter -->
+        <div class="match-controls">
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>RCB vs CSK</td>
-                    <td>26 March 2026</td>
-                    <td>Bengaluru</td>
-                    <td>₹500</td>
-                    <td>₹1500</td>
-                    <td>₹3000</td>
-                    <td>
-                        <button type="button"
-                            onclick="selectMatch('RCB vs CSK')">
-                            Book
-                        </button>
-                    </td>
-                </tr>
+            <label for="teamFilter">Filter by Team:</label>
 
-                <tr>
-                    <td>2</td>
-                    <td>MI vs KKR</td>
-                    <td>27 March 2026</td>
-                    <td>Mumbai</td>
-                    <td>₹500</td>
-                    <td>₹1500</td>
-                    <td>₹3000</td>
-                    <td>
-                        <button type="button"
-                            onclick="selectMatch('MI vs KKR')">
-                            Book
-                        </button>
-                    </td>
-                </tr>
+            <select id="teamFilter">
+                <option value="all">All Teams</option>
+                <option value="RCB">RCB</option>
+                <option value="CSK">CSK</option>
+                <option value="MI">MI</option>
+                <option value="KKR">KKR</option>
+            </select>
 
-                <tr>
-                    <td>3</td>
-                    <td>CSK vs MI</td>
-                    <td>28 March 2026</td>
-                    <td>Chennai</td>
-                    <td>₹500</td>
-                    <td>₹1500</td>
-                    <td>₹3000</td>
-                    <td>
-                        <button type="button"
-                            onclick="selectMatch('CSK vs MI')">
-                            Book
-                        </button>
-                    </td>
-                </tr>
+            <!-- Grid and List View Buttons -->
+            <div class="view-buttons">
 
-                <tr>
-                    <td>4</td>
-                    <td>RCB vs MI</td>
-                    <td>29 March 2026</td>
-                    <td>Bengaluru</td>
-                    <td>₹500</td>
-                    <td>₹1500</td>
-                    <td>₹3000</td>
-                    <td>
-                        <button type="button"
-                            onclick="selectMatch('RCB vs MI')">
-                            Book
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                <button type="button" id="gridViewBtn">
+                    Grid View
+                </button>
+
+                <button type="button" id="listViewBtn">
+                    List View
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Match Cards Container -->
+        <div class="match-grid" id="matchContainer">
+
+            <!-- Match 1 -->
+            <div class="match-card" data-team="RCB CSK">
+
+                <h3>Match 1</h3>
+
+                <h2>RCB vs CSK</h2>
+
+                <p>Date: 26 March 2026</p>
+                <p>Venue: Bengaluru</p>
+
+                <p>General: ₹500</p>
+                <p>Premium: ₹1500</p>
+                <p>VIP: ₹3000</p>
+
+                <button type="button"
+                    onclick="selectMatch('RCB vs CSK')">
+                    Book Ticket
+                </button>
+
+            </div>
+
+            <!-- Match 2 -->
+            <div class="match-card" data-team="MI KKR">
+
+                <h3>Match 2</h3>
+
+                <h2>MI vs KKR</h2>
+
+                <p>Date: 27 March 2026</p>
+                <p>Venue: Mumbai</p>
+
+                <p>General: ₹500</p>
+                <p>Premium: ₹1500</p>
+                <p>VIP: ₹3000</p>
+
+                <button type="button"
+                    onclick="selectMatch('MI vs KKR')">
+                    Book Ticket
+                </button>
+
+            </div>
+
+            <!-- Match 3 -->
+            <div class="match-card" data-team="CSK MI">
+
+                <h3>Match 3</h3>
+
+                <h2>CSK vs MI</h2>
+
+                <p>Date: 28 March 2026</p>
+                <p>Venue: Chennai</p>
+
+                <p>General: ₹500</p>
+                <p>Premium: ₹1500</p>
+                <p>VIP: ₹3000</p>
+
+                <button type="button"
+                    onclick="selectMatch('CSK vs MI')">
+                    Book Ticket
+                </button>
+
+            </div>
+
+            <!-- Match 4 -->
+            <div class="match-card" data-team="RCB MI">
+
+                <h3>Match 4</h3>
+
+                <h2>RCB vs MI</h2>
+
+                <p>Date: 29 March 2026</p>
+                <p>Venue: Bengaluru</p>
+
+                <p>General: ₹500</p>
+                <p>Premium: ₹1500</p>
+                <p>VIP: ₹3000</p>
+
+                <button type="button"
+                    onclick="selectMatch('RCB vs MI')">
+                    Book Ticket
+                </button>
+
+            </div>
+
+        </div>
+
+        <p id="noMatches" hidden>
+            No matches found for this team.
+        </p>
+
     </section>
 
     <!-- Booking Form -->
     <section id="booking">
+
         <h2>Book Your IPL Tickets</h2>
 
         <form id="bookingForm">
 
             <label for="match">Select Match:</label>
+
             <select id="match" required>
                 <option value="">Choose Match</option>
                 <option value="RCB vs CSK">RCB vs CSK</option>
@@ -149,6 +213,7 @@
             <br><br>
 
             <label for="stand">Select Stand Category:</label>
+
             <select id="stand" required>
                 <option value="">Choose Stand</option>
                 <option value="General">General</option>
@@ -159,8 +224,9 @@
             <br><br>
 
             <label for="quantity">Number of Tickets:</label>
+
             <input type="number" id="quantity"
-                min="1" max="10" value="1" required>
+                   min="1" max="10" value="1" required>
 
             <br><br>
 
@@ -169,10 +235,12 @@
             </button>
 
         </form>
+
     </section>
 
     <!-- Booking Summary -->
     <section id="summary">
+
         <h2>Booking Summary</h2>
 
         <div class="booking-summary">
@@ -205,25 +273,50 @@
         </div>
 
         <div id="toast"></div>
+
     </section>
 
-    <!-- Guidelines -->
+    <!-- Guidelines Section -->
     <section id="guidelines">
+
         <h2>Booking Guidelines</h2>
 
-        <ul>
-            <li>Select your preferred IPL match.</li>
-            <li>Choose your preferred stand category.</li>
-            <li>Select between 1 and 10 tickets.</li>
-            <li>Check your Booking Summary before proceeding.</li>
-            <li>Keep your booking details safe.</li>
-        </ul>
+        <div class="guidelines-grid">
+
+            <div class="guideline-card">
+                <h3>1. Select Match</h3>
+                <p>
+                    Select your favourite IPL match from the
+                    available match schedule.
+                </p>
+            </div>
+
+            <div class="guideline-card">
+                <h3>2. Choose Stand</h3>
+                <p>
+                    Select your preferred stand category:
+                    General, Premium or VIP.
+                </p>
+            </div>
+
+            <div class="guideline-card">
+                <h3>3. Confirm Booking</h3>
+                <p>
+                    Select ticket quantity and check the
+                    total amount in your Booking Summary.
+                </p>
+            </div>
+
+        </div>
+
     </section>
 
     <!-- Footer -->
     <footer>
+
         <p>© 2026 IPL Ticket Booking. All Rights Reserved.</p>
         <p>Enjoy the Cricket Festival!</p>
+
     </footer>
 
     <!-- JavaScript -->

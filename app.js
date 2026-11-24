@@ -1,4 +1,8 @@
 
+// =====================================
+// ACTIVITY 7: BOOKING SUMMARY
+// =====================================
+
 // Ticket Prices
 const ticketPrices = {
     General: 500,
@@ -37,7 +41,6 @@ function updateSummary() {
     const selectedStand = standSelect.value;
     const quantity = Number(quantityInput.value);
 
-    // Validate selections
     if (!selectedMatch || !selectedStand) {
         showToast("Please select a match and stand category!");
         return;
@@ -48,11 +51,9 @@ function updateSummary() {
         return;
     }
 
-    // Calculate price
     const price = ticketPrices[selectedStand];
     const total = price * quantity;
 
-    // Display summary
     summaryMatch.textContent = selectedMatch;
     summaryStand.textContent = selectedStand;
     summaryPrice.textContent = price;
@@ -62,19 +63,128 @@ function updateSummary() {
     showToast("Booking Summary Updated Successfully!");
 }
 
-// Select match from schedule
+// Select Match from Schedule
 function selectMatch(matchName) {
+
     matchSelect.value = matchName;
-    updateSummary();
 
     document.getElementById("booking").scrollIntoView({
         behavior: "smooth"
     });
+
+    if (standSelect.value) {
+        updateSummary();
+    } else {
+        showToast("Match selected! Choose your stand category.");
+    }
 }
 
-// Change Event Listeners
+// Booking Event Listeners
 matchSelect.addEventListener("change", updateSummary);
-
 standSelect.addEventListener("change", updateSummary);
-
 quantityInput.addEventListener("input", updateSummary);
+
+
+// =====================================
+// ACTIVITY 8: TEAM FILTER
+// =====================================
+
+const teamFilter = document.getElementById("teamFilter");
+const matchContainer = document.getElementById("matchContainer");
+const noMatches = document.getElementById("noMatches");
+
+teamFilter.addEventListener("change", function () {
+
+    const selectedTeam = teamFilter.value;
+    const matchCards = document.querySelectorAll(".match-card");
+
+    let visibleCount = 0;
+
+    matchCards.forEach(function (card) {
+
+        const teams = card.dataset.team.split(" ");
+
+        if (selectedTeam === "all" ||
+            teams.includes(selectedTeam)) {
+
+            card.style.display = "";
+            visibleCount++;
+
+        } else {
+
+            card.style.display = "none";
+        }
+    });
+
+    noMatches.hidden = visibleCount !== 0;
+
+    showToast("Match filter updated!");
+});
+
+
+// =====================================
+// ACTIVITY 8: GRID AND LIST VIEW
+// =====================================
+
+const gridViewBtn = document.getElementById("gridViewBtn");
+const listViewBtn = document.getElementById("listViewBtn");
+
+// Grid View
+gridViewBtn.addEventListener("click", function () {
+
+    matchContainer.classList.remove("list-view");
+
+    showToast("Grid View Activated!");
+});
+
+// List View
+listViewBtn.addEventListener("click", function () {
+
+    matchContainer.classList.add("list-view");
+
+    showToast("List View Activated!");
+});
+
+
+// =====================================
+// ACTIVITY 8: HAMBURGER MENU
+// =====================================
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+// Open and Close Mobile Menu
+menuToggle.addEventListener("click", function () {
+
+    navLinks.classList.toggle("active");
+
+    const isOpen = navLinks.classList.contains("active");
+
+    menuToggle.setAttribute("aria-expanded", isOpen);
+
+    menuToggle.textContent = isOpen ? "✕" : "☰";
+});
+
+// Close Menu After Clicking Navigation Link
+const navigationLinks = document.querySelectorAll("#navLinks a");
+
+navigationLinks.forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        navLinks.classList.remove("active");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+
+        menuToggle.textContent = "☰";
+    });
+});
+
+
+// =====================================
+// ACTIVITY 8: INITIAL SETTINGS
+// =====================================
+
+matchContainer.classList.remove("list-view");
+
+console.log("Activity 7 and Activity 8 JavaScript Loaded Successfully!");
