@@ -1,56 +1,80 @@
 
-function showToast(message) {
-    let toast = document.getElementById("toast");
+// Ticket Prices
+const ticketPrices = {
+    General: 500,
+    Premium: 1500,
+    VIP: 3000
+};
 
-    if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "toast";
-        document.body.appendChild(toast);
-    }
+// DOM Selectors
+const matchSelect = document.getElementById("match");
+const standSelect = document.querySelector("#stand");
+const quantityInput = document.getElementById("quantity");
+
+// Booking Summary Elements
+const summaryMatch = document.getElementById("summaryMatch");
+const summaryStand = document.getElementById("summaryStand");
+const summaryPrice = document.getElementById("summaryPrice");
+const summaryQuantity = document.getElementById("summaryQuantity");
+const totalAmount = document.getElementById("totalAmount");
+
+// Toast Notification
+function showToast(message) {
+    const toast = document.getElementById("toast");
 
     toast.textContent = message;
+    toast.classList.add("show");
 
-    toast.style.cssText = `
-        position: fixed !important;
-        bottom: 25px !important;
-        right: 25px !important;
-        background: #222 !important;
-        color: white !important;
-        padding: 15px 25px !important;
-        border-radius: 8px !important;
-        z-index: 999999 !important;
-        font-size: 16px !important;
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    `;
-
-    clearTimeout(window.toastTimer);
-
-    window.toastTimer = setTimeout(() => {
-        toast.style.display = "none";
-    }, 3000);
+    setTimeout(function () {
+        toast.classList.remove("show");
+    }, 2500);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+// Update Booking Summary
+function updateSummary() {
 
-    const bookButtons = document.querySelectorAll(".book-btn");
+    const selectedMatch = matchSelect.value;
+    const selectedStand = standSelect.value;
+    const quantity = Number(quantityInput.value);
 
-    bookButtons.forEach(button => {
-        button.addEventListener("click", function (event) {
+    // Validate selections
+    if (!selectedMatch || !selectedStand) {
+        showToast("Please select a match and stand category!");
+        return;
+    }
 
-            event.preventDefault();
+    if (!Number.isInteger(quantity) || quantity < 1 || quantity > 10) {
+        showToast("Please select 1 to 10 tickets!");
+        return;
+    }
 
-            const bookingForm = document.getElementById("booking");
+    // Calculate price
+    const price = ticketPrices[selectedStand];
+    const total = price * quantity;
 
-            if (bookingForm) {
-                bookingForm.scrollIntoView({
-                    behavior: "smooth"
-                });
+    // Display summary
+    summaryMatch.textContent = selectedMatch;
+    summaryStand.textContent = selectedStand;
+    summaryPrice.textContent = price;
+    summaryQuantity.textContent = quantity;
+    totalAmount.textContent = total;
 
-                showToast("Ready to book your IPL tickets!");
-            }
-        });
+    showToast("Booking Summary Updated Successfully!");
+}
+
+// Select match from schedule
+function selectMatch(matchName) {
+    matchSelect.value = matchName;
+    updateSummary();
+
+    document.getElementById("booking").scrollIntoView({
+        behavior: "smooth"
     });
+}
 
-});
+// Change Event Listeners
+matchSelect.addEventListener("change", updateSummary);
+
+standSelect.addEventListener("change", updateSummary);
+
+quantityInput.addEventListener("input", updateSummary);
